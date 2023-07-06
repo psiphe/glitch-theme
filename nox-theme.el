@@ -16,8 +16,8 @@
       (fg                "#a9b1d6")     ; default foreground
       (active-fg         "#c0caf5")     ; active element
       (dim-fg            "#292e42")     ; interface elements that are subtly visible - ui borders & dividers
-      (inactive-fg       "#565f89")     ; inactive elements that are visible when not in use - comments, unselected tabs, etc.
-      (muted-fg          "#313750")     ; inactive elements that are nearly hidden when not in use - unselected line numbers
+      (inactive-fg       "#565f89")     ; inactive elements that are visible when not in use - e.g. comments.
+      (muted-fg          "#313750")     ; inactive elements that are nearly hidden when not in use - e.g. unselected line numbers
 
       ;; diagnostics & popups
       ;; --------------------
@@ -103,7 +103,7 @@
    `(child-frame-border ((,class (:inherit border))))
    `(fill-column-indicator ((,class (:inherit border))))
    `(internal-border ((,class (:inherit border))))
-   `(vertical-border ((,class (:inherit border))))
+   `(vertical-border ((,class (:inherit border :foreground ,alt-bg))))
    `(isearch ((,class (:background ,info-bg-hl :foreground ,info-fg-hl))))
    `(isearch-fail ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(lazy-highlight ((,class (:background ,info-bg :foreground ,info-fg))))
@@ -115,12 +115,12 @@
    `(header-line-highlight ((,class (:inherit mode-line-highlight))))
    `(menu ((,class (:background ,alt-bg :foreground ,fg))))
    `(mode-line ((,class (:inherit menu))))
-   `(mode-line-active ((,class (:inherit (highlight mode-line) :foreground ,active-fg))))
+   `(mode-line-active ((,class (:inherit (mode-line) :foreground ,inactive-fg))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-buffer-id-inactive ((,class (:inherit mode-line-buffer-id))))
    `(mode-line-emphasis ((,class (:weight bold))))
    `(mode-line-highlight ((,class (:background ,active-bg-hl :foreground ,active-fg))))
-   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,inactive-fg))))
+   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,muted-fg :background ,bg))))
    `(tab-bar ((,class (:inherit menu))))
    `(tab-line ((,class (:inherit menu))))
    `(tool-bar ((,class (:inherit menu))))
@@ -242,7 +242,7 @@
    `(centaur-tabs-jump-identifier-unselected ((,class (:inherit centaur-tabs-unselected :foreground ,info-fg))))
    `(centaur-tabs-selected ((,class (:inherit (highlight tab-line) :foreground ,active-fg))))
    `(centaur-tabs-selected-modified ((,class (:inherit (warning centaur-tabs-selected) :background ,warning-bg))))
-   `(centaur-tabs-unselected ((,class (:inherit tab-line :foreground ,inactive-fg))))
+   `(centaur-tabs-unselected ((,class (:inherit tab-line :foreground ,muted-fg))))
    `(centaur-tabs-unselected-modified ((,class (:inherit (warning centaur-tabs-unselected)))))
 
    ;; company
@@ -316,6 +316,11 @@
    `(tree-sitter-hl-face:variable.parameter ((,class (:inherit font-lock-variable-name-face))))
    `(tree-sitter-hl-face:variable.special ((,class (:inherit font-lock-variable-name-face))))
    ))
+
+;;;###autoload
+(when (and (boundp 'custom-theme-load-path) load-file-name)
+  (add-to-list 'custom-theme-load-path
+    (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'nox)
 
