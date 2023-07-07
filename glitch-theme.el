@@ -1,8 +1,8 @@
-;;; nox-theme.el --- A medium-contrast frozen cyberpunk theme.
+;;; glitch-theme.el --- A medium-contrast holographic theme.
 ;;; Commentary:
 ;;; Code:
 
-(deftheme nox "A medium-contrast frozen cyberpunk theme.")
+(deftheme glitch "A medium-contrast holographic theme")
 (let ((class '((class color) (min-colors 89)))
 
       ;; base colors
@@ -56,7 +56,7 @@
       )
 
   (custom-theme-set-faces
-   'nox
+   'glitch
 
    ;; builtin faces
    ;; -------------
@@ -322,6 +322,6 @@
   (add-to-list 'custom-theme-load-path
     (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'nox)
+(provide-theme 'glitch)
 
-;;; nox-theme.el ends here
+;;; glitch-theme.el ends here
