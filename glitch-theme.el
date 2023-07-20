@@ -1,87 +1,138 @@
 ;;; glitch-theme.el --- A medium-contrast holographic theme.
+;; Version: 0.0.1
+
 ;;; Commentary:
+;; Things that need to be done before considering a v1 release
+;; - TODO: fix glitch-$color-[bg|bg-hl|fg|fg-hl] pairings
+;; - TODO: with-eval-after-load external packages?
+;; - TODO: make primary & secondary selection configurable by ansi color
+;; - TODO: figure out the correct minver (probably 27.1)
+;; - TODO: thorough scan through available groups to cover all faces
+
 ;;; Code:
 
 (deftheme glitch "A medium-contrast holographic theme.")
-(let ((class '((class color) (min-colors 89)))
+(let* ((class '((class color) (min-colors 89)))
 
-      ;;; Palette:
+      ;;; = Palette =
 
-      ;; Basic Text
+      ;; == Text ==
 
-      (default-bg        "#24283b")
-      (secondary-bg      "#1f2335")     ; darker alternative background (mode-line, tab-line)
-      (active-bg         "#292e42")     ; "current" element (active tab, line-number)
-      (active-bg-hl      "#414868")     ; highlight on top of the active-bg
+      (bg                     "#24283b")
+      (dark-bg                "#1f2335")
+      (active-bg              "#292e42")
+      (active-bg-hl           "#414868")
 
-      (default-fg        "#a9b1d6")
-      (active-fg         "#c0caf5")
-      (muted-fg          "#565f89")     ; inactive, but visible (comments)
-      (inactive-fg       "#313750")     ; inactive, nearly hidden (unselected line-number)
+      (fg                     "#a9b1d6")
+      (active-fg              "#c0caf5")
+      (muted-fg               "#565f89")     ; inactive, but visible
+      (inactive-fg            "#313750")     ; inactive, nearly hidden
 
-      ;; Diagnostics
+      ;; == Colors ==
 
-      (info-bg           "#273644")     ; info / success messages + selections (region)
-      (info-bg-hl        "#4c9e8a")
-      (info-fg           "#4c9e8a")
-      (info-fg-hl        "#11221e")
+      (glitch-black-bg        "#313750")
+      (glitch-black-bg-hl     "#1f2335")
+      (glitch-black-fg        "#1f2335")
+      (glitch-black-fg-hl     "#565f89")
 
-      (alt-info-bg       "#192a4d")
-      (alt-info-bg-hl    "#7aa2f7")
-      (alt-info-fg       "#7aa2f7")
-      (alt-info-fg-hl    "#031130")
+      ;; Functions, builtins
+      (glitch-blue-bg         "#192a4d")
+      (glitch-blue-bg-hl      "#7aa2f7")
+      (glitch-blue-fg         "#7aa2f7")
+      (glitch-blue-fg-hl      "#031130")
 
-      (warning-bg        "#37363f")
-      (warning-bg-hl     "#e0af68")
-      (warning-fg        "#e0af68")
-      (warning-fg-hl     "#2a1d09")
+      ;; Variables, object properties
+      (glitch-cyan-bg         "#274440")
+      (glitch-cyan-bg-hl      "#73daca")
+      (glitch-cyan-fg         "#73daca")
+      (glitch-cyan-fg-hl      "#222a29")
 
-      (error-bg          "#342c3c")
-      (error-bg-hl       "#f7768e")
-      (error-fg          "#f7768e")
-      (error-fg-hl       "#30030b")
+      ;; Info/Success
+      (glitch-green-bg        "#273644")
+      (glitch-green-bg-hl     "#4c9e8a")
+      (glitch-green-fg        "#4c9e8a")
+      (glitch-green-fg-hl     "#11221e")
 
-      ;;; Theme
+      ;; Keywords
+      (glitch-magenta-bg      "#231c31")
+      (glitch-magenta-bg-hl   "#bb9af7")
+      (glitch-magenta-fg      "#bb9af7")
+      (glitch-magenta-fg-hl   "#171320")
 
-      (change            "#7aa2f7")     ; functions
-      (critical          "#f7768e")     ; errors, important popups
-      (live              "#73daca")     ; object/struct properties, variables
-      (qualifier         "#2ac3de")     ; types
-      (risky             "#e0af68")     ; change, warnings
+      ;; Errors
+      (glitch-red-bg          "#342c3c")
+      (glitch-red-bg-hl       "#f7768e")
+      (glitch-red-fg          "#f7768e")
+      (glitch-red-fg-hl       "#30030b")
+
+      (glitch-white           "#c0caf5")
+      (glitch-white-bg-hl     "#bb9af7")
+      (glitch-white-fg        "#bb9af7")
+      (glitch-white-fg-hl     "#bb9af7")
+
+      ;; Warnings
+      (glitch-yellow-bg       "#37363f")
+      (glitch-yellow-bg-hl    "#e0af68")
+      (glitch-yellow-fg       "#e0af68")
+      (glitch-yellow-fg-hl    "#2a1d09")
+
+      ;; == Diagnostics ==
+
+      (info-bg                glitch-green-bg)
+      (info-bg-hl             glitch-green-bg-hl)
+      (info-fg                glitch-green-fg)
+      (info-fg-hl             glitch-green-fg-hl)
+
+      (alt-info-bg            glitch-blue-bg)     ; non-user select highlight (volatile highlights)
+      (alt-info-bg-hl         glitch-blue-bg-hl)
+      (alt-info-fg            glitch-blue-fg)
+      (alt-info-fg-hl         glitch-blue-fg-hl)
+
+      (warning-bg             glitch-yellow-bg)
+      (warning-bg-hl          glitch-yellow-bg-hl)
+      (warning-fg             glitch-yellow-fg)
+      (warning-fg-hl          glitch-yellow-fg-hl)
+
+      (error-bg               glitch-red-bg)
+      (error-bg-hl            glitch-red-bg-hl)
+      (error-fg               glitch-red-fg)
+      (error-fg-hl            glitch-red-fg-hl)
+
+      ;;; == Misc ==
+
       (safe              "#7892bf")     ; constants, numbers, strings
-      (special           "#ea9a97")     ; escape sequences, unusual elements
-      (structural        "#bb9af7")     ; keywords
+      (special           "#ea9a97")     ; escape sequences
       )
 
   (custom-theme-set-faces
    'glitch
 
-   ;;; Builtin Faces
+   ;;; = Builtin Faces =
 
    `(bold ((,class (:weight bold))))
    `(bold-italic ((,class (:weight bold :slant italic))))
    `(button ((,class (:inherit link))))
    `(completions-common-part ((,class (:inherit region))))
-   `(cursor ((,class (:background ,active-fg :foreground ,secondary-bg))))
-   `(default ((,class (:background ,default-bg :foreground ,default-fg))))
+   `(cursor ((,class (:background ,active-fg :foreground ,dark-bg))))
+   `(default ((,class (:background ,bg :foreground ,fg))))
    `(error ((,class (:foreground ,error-fg))))
    `(escape-glyph ((,class (:foreground ,special))))
    `(fixed-pitch ((,class (:family "monospace"))))
    `(fixed-pitch-serif ((,class (:family "monospace serif"))))
-   `(fringe ((,class (:background ,secondary-bg))))
+   `(fringe ((,class (:background ,dark-bg))))
    `(glyphless-char ((,class (:foreground ,special))))
    `(highlight ((,class (:background ,active-bg))))
-   `(homoglyph ((,class (:foreground ,live))))
+   `(homoglyph ((,class (:foreground ,glitch-cyan-fg))))
    `(italic ((,class (:slant italic))))
-   `(link ((,class (:foreground ,live))))
-   `(link-visited ((,class (:foreground ,structural))))
-   `(minibuffer-prompt ((,class (:foreground ,change))))
+   `(link ((,class (:foreground ,glitch-cyan-fg))))
+   `(link-visited ((,class (:foreground ,glitch-magenta-fg))))
+   `(minibuffer-prompt ((,class (:foreground ,glitch-blue-fg))))
    `(mouse ((,class (:inherit default))))
    `(nobreak-hyphen ((,class (:foreground ,special))))
    `(nobreak-space ((,class (:foreground ,special))))
    `(read-multiple-choice-face ((,class (:background ,active-bg :foreground ,active-fg))))
    `(region ((,class (:background ,info-bg :foreground ,info-fg))))
-   `(scroll-bar ((,class (:background ,default-bg :foreground ,inactive-fg))))
+   `(scroll-bar ((,class (:background ,bg :foreground ,inactive-fg))))
    `(secondary-selection ((,class (:background ,alt-info-bg :foreground ,alt-info-fg))))
    `(shadow ((,class (:foreground ,muted-fg))))
    `(success ((,class (:foreground ,info-fg))))
@@ -96,11 +147,11 @@
    `(line-number-current-line ((,class (:inherit highlight :foreground ,active-fg))))
    `(line-number-major-tick ((,class (:inherit highlight :foreground ,muted-fg))))
    `(line-number-minor-tick ((,class (:inherit line-number-major-tick))))
-   `(border ((,class (:foreground ,secondary-bg))))
+   `(border ((,class (:foreground ,dark-bg))))
    `(child-frame-border ((,class (:inherit border))))
-   `(fill-column-indicator ((,class (:inherit border))))
+   `(fill-column-indicator ((,class (:foreground ,inactive-fg))))
    `(internal-border ((,class (:inherit border))))
-   `(vertical-border ((,class (:inherit border :foreground ,secondary-bg))))
+   `(vertical-border ((,class (:inherit border :foreground ,dark-bg))))
    `(isearch ((,class (:background ,info-bg-hl :foreground ,info-fg-hl))))
    `(isearch-fail ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(lazy-highlight ((,class (:background ,info-bg :foreground ,info-fg))))
@@ -110,14 +161,14 @@
    `(show-paren-mismatch ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(header-line ((,class (:inherit mode-line))))
    `(header-line-highlight ((,class (:inherit mode-line-highlight))))
-   `(menu ((,class (:background ,secondary-bg :foreground ,default-fg))))
+   `(menu ((,class (:background ,dark-bg :foreground ,fg))))
    `(mode-line ((,class (:inherit menu))))
    `(mode-line-active ((,class (:inherit (mode-line) :foreground ,muted-fg))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-buffer-id-inactive ((,class (:inherit mode-line-buffer-id))))
    `(mode-line-emphasis ((,class (:weight bold))))
    `(mode-line-highlight ((,class (:background ,active-bg-hl :foreground ,active-fg))))
-   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,inactive-fg :background ,default-bg))))
+   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,inactive-fg :background ,bg))))
    `(tab-bar ((,class (:inherit menu))))
    `(tab-line ((,class (:inherit menu))))
    `(tool-bar ((,class (:inherit menu))))
@@ -125,13 +176,13 @@
    `(tty-menu-enabled-face ((,class (:inherit menu))))
    `(tty-menu-selected-face ((,class (:inherit (highlight menu) :foreground ,active-fg))))
 
-   ;;; Dired
+   ;;; = Dired =
 
    `(dired-broken-symlink ((,class (:inherit error))))
-   `(dired-header ((,class (:foreground ,change))))
+   `(dired-header ((,class (:foreground ,glitch-blue-fg))))
    `(dired-warning ((,class (:inherit warning :background ,warning-bg))))
 
-   ;;; Flymake
+   ;;; = Flymake =
 
    `(flymake-error ((,class (:inherit error :background ,error-bg))))
    `(flymake-error-echo ((,class (:inherit flymake-error))))
@@ -143,15 +194,15 @@
    `(flymake-warning-echo ((,class (:inherit flymake-warning))))
    `(flymake-warning-echo-at-eol ((,class (:inherit flymake-warning-echo))))
 
-   ;;; Org
+   ;;; = Org =
 
-   `(outline-1 ((,class (:foreground ,change))))
+   `(outline-1 ((,class (:foreground ,glitch-blue-fg))))
    `(outline-2 ((,class (:foreground ,safe))))
-   `(outline-3 ((,class (:foreground ,live))))
-   `(outline-4 ((,class (:foreground ,structural))))
-   `(outline-5 ((,class (:foreground ,qualifier))))
-   `(outline-6 ((,class (:foreground ,risky))))
-   `(outline-7 ((,class (:foreground ,critical))))
+   `(outline-3 ((,class (:foreground ,glitch-cyan-fg))))
+   `(outline-4 ((,class (:foreground ,glitch-magenta-fg))))
+   `(outline-5 ((,class (:foreground ,glitch-magenta-fg))))
+   `(outline-6 ((,class (:foreground ,glitch-yellow-fg))))
+   `(outline-7 ((,class (:foreground ,glitch-red-fg))))
    `(outline-8 ((,class (:foreground ,special))))
 
    `(org-agenda-column-dateline ((,class (:inherit menu))))
@@ -160,15 +211,15 @@
    `(org-agenda-dimmed-todo-face ((,class (:inherit shadow))))
    `(org-agenda-done ((,class (:inherit shadow))))
    `(org-agenda-restriction-lock ((,class (:inherit menu))))
-   `(org-agenda-structure ((,class (:foreground ,change))))
+   `(org-agenda-structure ((,class (:foreground ,glitch-blue-fg))))
    `(org-agenda-structure-filter ((,class (:inherit lazy-highlight))))
    `(org-archived ((,class (:inherit shadow))))
-   `(org-block ((,class (:background ,secondary-bg :foreground ,default-fg))))
+   `(org-block ((,class (:background ,dark-bg :foreground ,fg))))
    `(org-checkbox ((,class (:inherit highlight :foreground ,active-fg))))
    `(org-clock-overlay ((,class (:inherit secondary-selection))))
-   `(org-column ((,class (:background ,secondary-bg :foreground ,default-fg))))
+   `(org-column ((,class (:background ,dark-bg :foreground ,fg))))
    `(org-column-title ((,class (:inherit org-column :weight bold))))
-   `(org-date ((,class (:foreground ,live))))
+   `(org-date ((,class (:foreground ,glitch-cyan-fg))))
    `(org-date-selected ((,class (:background ,alt-info-bg-hl :foreground ,alt-info-fg-hl))))
    `(org-dispatcher-highlight ((,class (:inherit lazy-highlight))))
    `(org-document-info ((,class (:foreground ,safe))))
@@ -176,7 +227,7 @@
    `(org-done ((,class (:inherit shadow))))
    `(org-drawer ((,class (:inherit shadow))))
    `(org-ellipsis ((,class (:foreground ,special))))
-   `(org-footnote ((,class (:foreground ,qualifier))))
+   `(org-footnote ((,class (:foreground ,glitch-magenta-fg))))
    `(org-formula ((,class (:foreground ,special))))
    `(org-habit-alert-face ((,class (:background ,warning-bg :foreground ,warning-fg))))
    `(org-habit-alert-future-face ((,class (:inherit org-habit-alert))))
@@ -191,11 +242,11 @@
    `(org-latex-and-related ((,class (:foreground ,special))))
    `(org-meta-line ((,class (:inherit (shadow menu)))))
    `(org-mode-line-clock-overrun ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
-   `(org-priority ((,class (:foreground ,qualifier))))
+   `(org-priority ((,class (:foreground ,glitch-magenta-fg))))
    `(org-scheduled ((,class (:foreground ,info-fg))))
    `(org-scheduled-previously ((,class (:inherit warning))))
    `(org-scheduled-today ((,class (:background ,info-bg-hl :foreground ,info-fg-hl))))
-   `(org-sexp-date ((,class (:foreground ,qualifier))))
+   `(org-sexp-date ((,class (:foreground ,glitch-magenta-fg))))
    `(org-special-keyword ((,class (:inherit font-lock-keyword-face))))
    `(org-table ((,class (:foreground ,muted-fg))))
    `(org-table-header ((,class (:inherit menu))))
@@ -203,43 +254,43 @@
    `(org-todo ((,class (:inherit warning))))
    `(org-upcoming-deadline ((,class (:inherit warning))))
 
-   ;;; Syntax Highlighting
+   ;;; = Syntax Highlighting =
 
-   `(font-lock-builtin-face ((,class (:foreground ,change))))
+   `(font-lock-builtin-face ((,class (:foreground ,glitch-blue-fg))))
    `(font-lock-comment-face ((,class (:foreground ,muted-fg))))
    `(font-lock-constant-face ((,class (:foreground ,safe))))
    `(font-lock-doc-face ((,class (:inherit font-lock-comment-face))))
-   `(font-lock-function-call-face ((,class (:foreground ,change))))
+   `(font-lock-function-call-face ((,class (:foreground ,glitch-blue-fg))))
    `(font-lock-function-name-face ((,class (:inherit font-lock-function-call-face))))
-   `(font-lock-keyword-face ((,class (:foreground ,structural))))
-   `(font-lock-negation-char-face ((,class (:foreground ,critical))))
+   `(font-lock-keyword-face ((,class (:foreground ,glitch-magenta-fg))))
+   `(font-lock-negation-char-face ((,class (:foreground ,glitch-red-fg))))
    `(font-lock-number-face ((,class (:foreground ,safe))))
    `(font-lock-operator-face ((,class (:inherit font-lock-function-call-face))))
-   `(font-lock-property-name-face ((,class (:foreground ,live))))
-   `(font-lock-property-use-face ((,class (:foreground ,live))))
+   `(font-lock-property-name-face ((,class (:foreground ,glitch-cyan-fg))))
+   `(font-lock-property-use-face ((,class (:foreground ,glitch-cyan-fg))))
    `(font-lock-string-face ((,class (:foreground ,safe))))
-   `(font-lock-type-face ((,class (:foreground ,qualifier))))
-   `(font-lock-variable-name-face ((,class (:foreground ,live))))
-   `(font-lock-variable-use-face ((,class (:foreground ,live))))
+   `(font-lock-type-face ((,class (:foreground ,glitch-magenta-fg))))
+   `(font-lock-variable-name-face ((,class (:foreground ,glitch-cyan-fg))))
+   `(font-lock-variable-use-face ((,class (:foreground ,glitch-cyan-fg))))
    `(font-lock-warning-face ((,class (:inherit warning))))
 
-   ;;; External Packages
+   ;;; = External Packages =
 
-   ;;; ace-window
+   ;;; = ace-window =
 
    `(aw-background-face ((,class (:foreground ,inactive-fg))))
    `(aw-leading-char-face ((,class (:inherit success :weight bold))))
    `(aw-minibuffer-leading-char-face ((,class (:inherit aw-leading-char-face))))
 
-   ;;; avy
+   ;;; = avy =
 
    `(avy-goto-char-timer-face ((,class (:inherit lazy-highlight))))
    `(avy-lead-face ((,class (:inherit isearch))))
-   `(avy-lead-face-0 ((,class (:background ,warning-bg-hl :foreground ,warning-fg-hl))))
+   `(avy-lead-face-0 ((,class (:inherit isearch))))
    `(avy-lead-face-1 ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(avy-lead-face-2 ((,class (:background ,alt-info-bg-hl :foreground ,alt-info-fg-hl))))
 
-   ;;; centaur-tabs
+   ;;; = centaur-tabs =
 
    `(centaur-tabs-jump-identifier-selected ((,class (:inherit centaur-tabs-selected :foreground ,info-fg))))
    `(centaur-tabs-jump-identifier-unselected ((,class (:inherit centaur-tabs-unselected :foreground ,info-fg))))
@@ -248,57 +299,67 @@
    `(centaur-tabs-unselected ((,class (:inherit tab-line :foreground ,inactive-fg))))
    `(centaur-tabs-unselected-modified ((,class (:inherit (warning centaur-tabs-unselected)))))
 
-   ;;; company
+   ;;; = company =
 
    `(company-echo-common ((,class (:inherit success))))
    `(company-template-field ((,class (:background ,active-bg :foreground ,active-fg))))
-   `(company-tooltip ((,class (:background ,secondary-bg))))
-   `(company-tooltip-annotation ((,class (:foreground ,qualifier))))
+   `(company-tooltip ((,class (:dark-bg))))
+   `(company-tooltip-annotation ((,class (:foreground ,glitch-magenta-fg))))
    `(company-tooltip-common ((,class (:inherit lazy-highlight))))
    `(company-tooltip-scrollbar-thumb ((,class (:background ,inactive-fg))))
    `(company-tooltip-scrollbar-track ((,class (:inherit company-tooltip))))
    `(company-tooltip-selection ((,class (:inherit highlight))))
 
-   ;;; diff-hl
+   ;;; = diff-hl =
 
    `(diff-hl-change ((,class (:background ,warning-bg-hl :foreground ,warning-bg-hl))))
    `(diff-hl-delete ((,class (:background ,error-bg-hl :foreground ,error-bg-hl))))
    `(diff-hl-insert ((,class (:background ,info-bg-hl :foreground ,info-bg-hl))))
 
-   ;;; git-timemachine
+   ;;; = git-timemachine =
 
-   `(git-timemachine-commit ((,class (:foreground ,change))))
-   `(git-timemachine-minibuffer-author-face ((,class (:foreground ,structural))))
+   `(git-timemachine-commit ((,class (:foreground ,glitch-blue-fg))))
+   `(git-timemachine-minibuffer-author-face ((,class (:foreground ,glitch-magenta-fg))))
    `(git-timemachine-minibuffer-detail-face ((,class (:foreground ,info-fg))))
 
-   ;;; magit
+   ;;; = magit =
 
-   `(magit-branch-local ((,class (:foreground ,change))))
-   `(magit-branch-remote ((,class (:foreground ,structural))))
+   `(magit-branch-local ((,class (:foreground ,glitch-blue-fg))))
+   `(magit-branch-remote ((,class (:foreground ,glitch-magenta-fg))))
    `(magit-diff-added ((,class (:inherit magit-diff-context))))
    `(magit-diff-added-highlight ((,class (:background ,info-bg :foreground ,info-fg))))
-   `(magit-diff-context ((,class (:inherit shadow :background ,default-bg))))
-   `(magit-diff-context-highlight ((,class (:background ,active-bg :foreground ,default-fg))))
-   `(magit-diff-file-heading ((,class (:inherit shadow :background ,default-bg))))
+   `(magit-diff-context ((,class (:inherit shadow :background ,bg))))
+   `(magit-diff-context-highlight ((,class (:background ,active-bg :foreground ,fg))))
+   `(magit-diff-file-heading ((,class (:inherit shadow :background ,bg))))
    `(magit-diff-file-heading-highlight ((,class (:background ,active-bg :foreground ,active-fg))))
-   `(magit-diff-hunk-heading ((,class (:inherit shadow :background ,default-bg))))
+   `(magit-diff-hunk-heading ((,class (:inherit shadow :background ,bg))))
    `(magit-diff-hunk-heading-highlight ((,class (:background ,active-bg :foreground ,active-fg))))
    `(magit-diff-hunk-region ((,class (:background ,warning-bg :foreground ,warning-fg))))
-   `(magit-diff-lines-heading ((,class (:inherit shadow :background ,default-bg))))
+   `(magit-diff-lines-heading ((,class (:inherit shadow :background ,bg))))
    `(magit-diff-removed ((,class (:inherit magit-diff-context))))
    `(magit-diff-removed-highlight ((,class (:background ,error-bg :foreground ,error-fg))))
    `(magit-diff-whitespace-warning ((,class ())))
    `(magit-item-highlight ((,class (:inherit highlight))))
-   `(magit-section-heading ((,class (:foreground ,change))))
+   `(magit-section-heading ((,class (:foreground ,glitch-blue-fg))))
    `(magit-section-highlight ((,class (:background ,active-bg :foreground ,active-fg))))
 
-   ;;; marginalia
+   ;;; = marginalia =
 
-   `(marginalia-file-priv-dir ((,class (:foreground ,qualifier))))
-   `(marginalia-file-priv-link ((,class (:foreground ,qualifier))))
-   `(marginalia-key ((,class (:foreground ,qualifier))))
+   `(marginalia-file-priv-dir ((,class (:foreground ,glitch-magenta-fg))))
+   `(marginalia-file-priv-link ((,class (:foreground ,glitch-magenta-fg))))
+   `(marginalia-key ((,class (:foreground ,glitch-magenta-fg))))
 
-   ;;; tree-sitter
+   ;;; = pulsar =
+
+   `(pulsar-generic ((,class (:inherit secondary-selection))))
+   `(pulsar-blue ((,class (:inherit pulsar-generic))))
+   `(pulsar-cyan ((,class (:background ,glitch-cyan-bg :foreground ,glitch-cyan-fg))))
+   `(pulsar-green ((,class (:background ,glitch-green-bg :foreground ,glitch-green-fg))))
+   `(pulsar-magenta ((,class (:background ,glitch-magenta-bg :foreground ,glitch-magenta-fg))))
+   `(pulsar-red ((,class (:background ,glitch-red-bg :foreground ,glitch-red-fg))))
+   `(pulsar-yellow ((,class (:background ,glitch-yellow-bg :foreground ,glitch-yellow-fg))))
+
+   ;;; = tree-sitter =
 
    `(tree-sitter-hl-face:comment ((,class (:inherit font-lock-comment-face))))
    `(tree-sitter-hl-face:constant ((,class (:inherit font-lock-constant-face))))
