@@ -100,10 +100,17 @@
 
       ;;; == Misc ==
 
+      (qualifier         "#2ac3de")     ; types
       (safe              "#7892bf")     ; constants, numbers, strings
       (special           "#ea9a97")     ; escape sequences
       )
-
+  (setq-default org-modern-todo-faces
+                '(("TODO" :background "#e0af68" :foreground "#37363f" :weight bold)
+                  ("CURR" :background "#4c9e8a" :foreground "#273644" :weight bold)
+                  ("REVW" :background "#7aa2f7" :foreground "#192a4d" :weight bold)
+                  ("WAIT" :background "#f7768e" :foreground "#342c3c" :weight bold)
+                  ("DEPL" :background "#bb9af7" :foreground "#231c31" :weight bold)
+                  ("DONE" :background "#1f2335" :foreground "#313750" :weight bold)))
   (custom-theme-set-faces
    'glitch
 
@@ -149,10 +156,10 @@
    `(line-number-minor-tick ((,class (:inherit line-number-major-tick))))
    `(border ((,class (:foreground ,dark-bg))))
    `(child-frame-border ((,class (:inherit border))))
-   `(fill-column-indicator ((,class (:foreground ,inactive-fg))))
+   `(fill-column-indicator ((,class (:foreground ,dark-bg))))
    `(internal-border ((,class (:inherit border))))
-   `(vertical-border ((,class (:inherit border :foreground ,dark-bg))))
-   `(isearch ((,class (:background ,info-bg-hl :foreground ,info-fg-hl))))
+   `(vertical-border ((,class (:inherit border))))
+   `(isearch ((,class (:background ,info-bg-hl :foreground ,info-bg))))
    `(isearch-fail ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(lazy-highlight ((,class (:background ,info-bg :foreground ,info-fg))))
    `(match ((,class (:inherit isearch))))
@@ -163,13 +170,15 @@
    `(header-line-highlight ((,class (:inherit mode-line-highlight))))
    `(menu ((,class (:background ,dark-bg :foreground ,fg))))
    `(mode-line ((,class (:inherit menu))))
-   `(mode-line-active ((,class (:inherit (mode-line) :foreground ,muted-fg))))
+   `(mode-line-active ((,class (:inherit (mode-line) :foreground ,active-fg :background ,active-bg))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-buffer-id-inactive ((,class (:inherit mode-line-buffer-id))))
    `(mode-line-emphasis ((,class (:weight bold))))
    `(mode-line-highlight ((,class (:background ,active-bg-hl :foreground ,active-fg))))
-   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,inactive-fg :background ,bg))))
+   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,muted-fg :background ,dark-bg))))
+
    `(tab-bar ((,class (:inherit menu))))
+
    `(tab-line ((,class (:inherit menu))))
    `(tool-bar ((,class (:inherit menu))))
    `(tty-menu-disabled-face ((,class (:inherit menu :foreground ,inactive-fg))))
@@ -184,15 +193,16 @@
 
    ;;; = Flymake =
 
-   `(flymake-error ((,class (:inherit error :background ,error-bg))))
+   `(flymake-end-of-line-diagnostics-face ((,class (:background ,info-bg :foreground ,info-fg))))
+   `(flymake-error ((,class (:background ,error-bg :foreground ,error-fg))))
    `(flymake-error-echo ((,class (:inherit flymake-error))))
-   `(flymake-error-echo-at-eol ((,class (:inherit flymake-error-echo))))
-   `(flymake-note ((,class (:inherit success :background ,info-bg))))
+   `(flymake-error-echo-at-eol ((,class (:inherit flymake-error))))
+   `(flymake-note ((,class (:background ,info-bg :foreground ,info-fg))))
    `(flymake-note-echo ((,class (:inherit flymake-note))))
-   `(flymake-note-echo-at-eol ((,class (:inherit flymake-note-echo))))
-   `(flymake-warning ((,class (:inherit warning :background ,warning-bg))))
+   `(flymake-note-echo-at-eol ((,class (:inherit flymake-note))))
+   `(flymake-warning ((,class (:background ,warning-bg :foreground ,warning-fg))))
    `(flymake-warning-echo ((,class (:inherit flymake-warning))))
-   `(flymake-warning-echo-at-eol ((,class (:inherit flymake-warning-echo))))
+   `(flymake-warning-echo-at-eol ((,class (:inherit flymake-warning))))
 
    ;;; = Org =
 
@@ -276,54 +286,112 @@
 
    ;;; = External Packages =
 
-   ;;; = ace-window =
+   ;; == ace-window ==
 
-   `(aw-background-face ((,class (:foreground ,inactive-fg))))
-   `(aw-leading-char-face ((,class (:inherit success :weight bold))))
+   `(aw-background-face ((,class ())))
+   `(aw-key-face ((,class (:foreground ,glitch-blue-fg))))
+   `(aw-leading-char-face ((,class (:foreground ,glitch-green-fg :weight bold))))
    `(aw-minibuffer-leading-char-face ((,class (:inherit aw-leading-char-face))))
+   `(aw-mode-line-face ((,class (:foreground ,fg :weight bold))))
 
-   ;;; = avy =
+   ;; == avy ==
 
    `(avy-goto-char-timer-face ((,class (:inherit lazy-highlight))))
    `(avy-lead-face ((,class (:inherit isearch))))
-   `(avy-lead-face-0 ((,class (:inherit isearch))))
+   `(avy-lead-face-0 ((,class (:inherit avy-lead-face))))
    `(avy-lead-face-1 ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(avy-lead-face-2 ((,class (:background ,alt-info-bg-hl :foreground ,alt-info-fg-hl))))
 
    ;;; = centaur-tabs =
 
-   `(centaur-tabs-jump-identifier-selected ((,class (:inherit centaur-tabs-selected :foreground ,info-fg))))
-   `(centaur-tabs-jump-identifier-unselected ((,class (:inherit centaur-tabs-unselected :foreground ,info-fg))))
-   `(centaur-tabs-selected ((,class (:inherit (highlight tab-line) :foreground ,active-fg))))
-   `(centaur-tabs-selected-modified ((,class (:inherit (warning centaur-tabs-selected) :background ,warning-bg))))
-   `(centaur-tabs-unselected ((,class (:inherit tab-line :foreground ,inactive-fg))))
-   `(centaur-tabs-unselected-modified ((,class (:inherit (warning centaur-tabs-unselected)))))
+   `(centaur-tabs-active-bar-face ((,class (:foreground ,active-fg))))
+   `(centaur-tabs-close-mouse-face ((,class (:foreground ,active-fg))))
+   `(centaur-tabs-close-selected ((,class (:inverse-video t))))
+   `(centaur-tabs-close-unselected ((,class (:inherit centaur-tabs-unselected))))
 
-   ;;; = company =
+   `(centaur-tabs-default ((,class (:inherit default))))
 
-   `(company-echo-common ((,class (:inherit success))))
-   `(company-template-field ((,class (:background ,active-bg :foreground ,active-fg))))
-   `(company-tooltip ((,class (:dark-bg))))
+   `(centaur-tabs-jump-identifier-selected ((,class (:inherit centaur-tabs-selected :foreground ,glitch-green-fg))))
+   `(centaur-tabs-jump-identifier-unselected ((,class (:inherit centaur-tabs-unselected :foreground ,active-fg))))
+
+   `(centaur-tabs-modified-marker-selected ((,class (:inherit centaur-tabs-selected))))
+   `(centaur-tabs-modified-marker-unselected ((,class (:inherit centaur-tabs-unselected))))
+
+   `(centaur-tabs-name-mouse-face ((,class (:foreground ,active-fg))))
+
+   `(centaur-tabs-selected ((,class (:inherit highlight :background ,active-bg :foreground ,active-fg))))
+   `(centaur-tabs-selected-modified ((,class (:background ,warning-bg :foreground ,warning-fg))))
+   `(centaur-tabs-unselected ((,class (:inherit tab-line :foreground ,muted-fg))))
+   `(centaur-tabs-unselected-modified ((,class (:inherit tab-line :foreground ,glitch-yellow-fg))))
+
+   ;; == company ==
+
+   `(company-echo ((,class (:inherit default))))
+   `(company-echo-common ((,class (:background ,info-bg :foreground ,info-fg))))
+
+   `(company-preview ((,class (:inherit highlight))))
+   `(company-preview-common ((,class (:inherit company-echo-common))))
+   `(company-preview-search ((,class (:inherit company-echo-common))))
+
+   `(company-template-field ((,class (:inherit highlight))))
+
+   `(company-tooltip ((,class (:inherit default :background ,dark-bg))))
    `(company-tooltip-annotation ((,class (:foreground ,glitch-magenta-fg))))
-   `(company-tooltip-common ((,class (:inherit lazy-highlight))))
-   `(company-tooltip-scrollbar-thumb ((,class (:background ,inactive-fg))))
-   `(company-tooltip-scrollbar-track ((,class (:inherit company-tooltip))))
-   `(company-tooltip-selection ((,class (:inherit highlight))))
+   `(company-tooltip-common ((,class (:inherit company-echo-common))))
+   `(company-tooltip-common-selection ((,class (:inherit company-tooltip-common))))
+   `(company-tooltip-deprecated ((,class (:foreground ,special))))
+   `(company-tooltip-mouse ((,class (:inherit highlight))))
+   `(company-tooltip-quick-access ((,class (:foreground ,glitch-magenta-fg))))
+   `(company-tooltip-quick-access-selection ((,class (:inherit company-tooltip-quick-access))))
+   `(company-tooltip-scrollbar-thumb ((,class (:background ,muted-fg))))
+   `(company-tooltip-scrollbar-track ((,class (:background ,active-bg))))
+   `(company-tooltip-search ((,class (:inherit highlight))))
+   `(company-tooltip-search-selection ((,class (:inherit company-echo-common))))
+   `(company-tooltip-selection ((,class (:inherit company-echo-common))))
 
-   ;;; = diff-hl =
+   ;; == diff-hl ==
 
    `(diff-hl-change ((,class (:background ,warning-bg-hl :foreground ,warning-bg-hl))))
    `(diff-hl-delete ((,class (:background ,error-bg-hl :foreground ,error-bg-hl))))
    `(diff-hl-insert ((,class (:background ,info-bg-hl :foreground ,info-bg-hl))))
+   `(diff-hl-reverted-hunk-highlight ((,class (:inverse-video t))))
 
-   ;;; = git-timemachine =
+   `(diff-hl-margin-change ((,class (:inherit diff-hl-change))))
+   `(diff-hl-margin-delete ((,class (:inherit diff-hl-delete))))
+   `(diff-hl-margin-insert ((,class (:inherit diff-hl-insert))))
+   `(diff-hl-margin-ignored ((,class (:inverse-video t))))
+   `(diff-hl-margin-unknown ((,class (:inverse-video t))))
+
+   `(diff-hl-dired-change ((,class (:inherit diff-hl-change))))
+   `(diff-hl-dired-delete ((,class (:inherit diff-hl-delete))))
+   `(diff-hl-dired-insert ((,class (:inherit diff-hl-insert))))
+   `(diff-hl-dired-ignored ((,class (:inverse-video t))))
+   `(diff-hl-dired-unknown ((,class (:inverse-video t))))
+
+   ;; == dirvish ==
+
+   `(dirvish-hl-line ((,class (:inherit highlight :foreground ,active-fg))))
+
+   ;; == git-timemachine ==
 
    `(git-timemachine-commit ((,class (:foreground ,glitch-blue-fg))))
    `(git-timemachine-minibuffer-author-face ((,class (:foreground ,glitch-magenta-fg))))
    `(git-timemachine-minibuffer-detail-face ((,class (:foreground ,info-fg))))
 
-   ;;; = magit =
+   ;; == hl-todo ==
 
+   `(hl-todo ((,class (:foreground ,glitch-yellow-fg :weight bold))))
+
+   ;; = magit =
+
+   `(diff-refine-added ((,class (:background ,info-bg :foreground ,info-fg))))
+   `(diff-refine-removed ((,class (:background ,error-bg :foreground ,error-fg))))
+   `(magit-bisect-bad ((,class (:background ,error-bg :foreground ,error-fg))))
+   `(magit-bisect-good ((,class (:background ,info-bg :foreground ,info-fg))))
+   `(magit-bisect-skip ((,class (:background ,warning-bg :foreground, warning-fg))))
+   `(magit-blame-date ((,class (:inherit default))))
+   `(magit-blame-dimmed ((,class (:inherit shadow))))
+   `(magit-blame-hash ((,class (:inherit default))))
    `(magit-branch-local ((,class (:foreground ,glitch-blue-fg))))
    `(magit-branch-remote ((,class (:foreground ,glitch-magenta-fg))))
    `(magit-diff-added ((,class (:inherit magit-diff-context))))
@@ -345,13 +413,44 @@
 
    ;;; = marginalia =
 
+   `(marginalia-archive ((,class (:foreground ,special))))
+   `(marginalia-char ((,class (:foreground ,glitch-magenta-fg))))
+   `(marginalia-date ((,class (:foreground ,glitch-blue-fg))))
+   `(marginalia-documentation ((,class (:inherit comment))))
+   `(marginalia-file-name-face ((,class (:inherit comment))))
+   `(marginalia-file-owner ((,class (:foreground ,glitch-blue-fg))))
+   `(marginalia-file-priv-dir ((,class (:foreground ,glitch-yellow-fg))))
+   `(marginalia-file-priv-exec ((,class (:foreground ,glitch-red-fg))))
+   `(marginalia-file-priv-link ((,class (:foreground ,glitch-yellow-fg))))
+   `(marginalia-file-priv-no ((,class (:inherit comment))))
+   `(marginalia-file-priv-other ((,class (:foreground ,glitch-blue-fg))))
+   `(marginalia-file-priv-rare ((,class (:foreground ,special))))
+   `(marginalia-file-priv-read ((,class (:foreground ,glitch-green-fg))))
+   `(marginalia-file-priv-write ((,class (:foreground ,glitch-red-fg))))
+   `(marginalia-function ((,class (:inherit font-lock-function-name-face))))
+   `(marginalia-installed ((,class (:foreground ,glitch-magenta-fg))))
+   `(marginalia-key ((,class (:foreground ,glitch-magenta-fg))))
+   `(marginalia-lighter ((,class (:foreground ,safe))))
+   `(marginalia-list ((,class (:foreground ,safe))))
+   `(marginalia-mode ((,class (:foreground ,qualifier))))
+   `(marginalia-modified ((,class (:inherit warning))))
+   `(marginalia-null ((,class (:inherit comment))))
+   `(marginalia-number ((,class (:foreground ,safe))))
+   `(marginalia-off ((,class (:foreground ,glitch-red-fg))))
+   `(marginalia-on ((,class (:foreground ,glitch-green-fg))))
+   `(marginalia-size ((,class (:foreground ,safe))))
+   `(marginalia-string ((,class (:foreground ,safe))))
+   `(marginalia-symbol ((,class (:inherit font-lock-keyword-face))))
+   `(marginalia-true ((,class (:foreground ,glitch-blue-fg))))
+   `(marginalia-value ((,class (:inherit font-lock-variable-use-face))))
+   `(marginalia-version ((,class (:foreground ,qualifier))))
+   `(marginalia-key ((,class (:foreground ,font-lock-variable-name-face))))
    `(marginalia-file-priv-dir ((,class (:foreground ,glitch-magenta-fg))))
    `(marginalia-file-priv-link ((,class (:foreground ,glitch-magenta-fg))))
-   `(marginalia-key ((,class (:foreground ,glitch-magenta-fg))))
 
    ;;; = pulsar =
 
-   `(pulsar-generic ((,class (:inherit secondary-selection))))
+   `(pulsar-generic ((,class (:background ,glitch-green-bg-hl))))
    `(pulsar-blue ((,class (:inherit pulsar-generic))))
    `(pulsar-cyan ((,class (:background ,glitch-cyan-bg :foreground ,glitch-cyan-fg))))
    `(pulsar-green ((,class (:background ,glitch-green-bg :foreground ,glitch-green-fg))))
@@ -390,6 +489,30 @@
    `(tree-sitter-hl-face:variable.builtin ((,class (:inherit font-lock-variable-name-face))))
    `(tree-sitter-hl-face:variable.parameter ((,class (:inherit font-lock-variable-name-face))))
    `(tree-sitter-hl-face:variable.special ((,class (:inherit font-lock-variable-name-face))))
+
+   ;; == vertico ==
+
+   `(vertico-current ((,class (:inherit region))))
+   `(vertico-group-separator ((,class (:inherit comment))))
+   `(vertico-group-title ((,class (:foreground ,glitch-blue-fg))))
+   `(vertico-multiline ((,class (:foreground ,special))))
+
+   ;; == volatile-highlights ==
+
+   `(vhl/default-face ((,class (:inherit secondary-selection))))
+
+   ;; == which-key ==
+
+   `(which-key-command-description-face ((,class (:inherit font-lock-function-name-face))))
+   `(which-key-docstring-face ((,class (:inherit comment))))
+   `(which-key-group-description-face ((,class (:inherit font-lock-keyword-face))))
+   `(which-key-highlighted-command-face ((,class (:inherit font-lock-function-call-face))))
+   `(which-key-key-face ((,class (:inherit font-lock-variable-name-face))))
+   `(which-key-local-map-description-face ((,class (:foreground ,glitch-green-fg))))
+   `(which-key-note-face ((,class (:inherit comment))))
+   `(which-key-separator-face ((,class (:inherit comment))))
+   `(which-key-special-key-face ((,class (:foreground ,special))))
+
    ))
 
 ;;;###autoload
