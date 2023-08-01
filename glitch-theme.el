@@ -156,7 +156,7 @@
    `(line-number-minor-tick ((,class (:inherit line-number-major-tick))))
    `(border ((,class (:foreground ,dark-bg))))
    `(child-frame-border ((,class (:inherit border))))
-   `(fill-column-indicator ((,class (:foreground ,dark-bg))))
+   `(fill-column-indicator ((,class (:foreground ,inactive-fg))))
    `(internal-border ((,class (:inherit border))))
    `(vertical-border ((,class (:inherit border))))
    `(isearch ((,class (:background ,info-bg-hl :foreground ,info-bg))))
@@ -450,7 +450,7 @@
 
    ;;; = pulsar =
 
-   `(pulsar-generic ((,class (:background ,glitch-green-bg-hl))))
+   `(pulsar-generic ((,class (:background ,info-bg :foreground ,info-fg))))
    `(pulsar-blue ((,class (:inherit pulsar-generic))))
    `(pulsar-cyan ((,class (:background ,glitch-cyan-bg :foreground ,glitch-cyan-fg))))
    `(pulsar-green ((,class (:background ,glitch-green-bg :foreground ,glitch-green-fg))))
