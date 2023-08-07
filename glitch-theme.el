@@ -149,9 +149,9 @@
    `(variable-pitch ((,class (:family "sans serif"))))
    `(variable-pitch-text ((,class (:family "sans serif"))))
    `(warning ((,class (:foreground ,warning-fg))))
-   `(hl-line ((,class (:inherit highlight))))
+   `(hl-line ((,class (:inherit highlight :background "#2f354b" :foreground ,active-fg))))
    `(line-number ((,class (:foreground ,inactive-fg))))
-   `(line-number-current-line ((,class (:inherit highlight :foreground ,active-fg))))
+   `(line-number-current-line ((,class (:inherit highlight :background "#2f354b" :foreground ,active-fg))))
    `(line-number-major-tick ((,class (:inherit highlight :foreground ,muted-fg))))
    `(line-number-minor-tick ((,class (:inherit line-number-major-tick))))
    `(border ((,class (:foreground ,dark-bg))))
@@ -170,7 +170,7 @@
    `(header-line-highlight ((,class (:inherit mode-line-highlight))))
    `(menu ((,class (:background ,dark-bg :foreground ,fg))))
    `(mode-line ((,class (:inherit menu))))
-   `(mode-line-active ((,class (:inherit (mode-line) :foreground ,active-fg :background ,active-bg))))
+   `(mode-line-active ((,class (:inherit (mode-line) :background "#2f354b" :foreground ,active-fg))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-buffer-id-inactive ((,class (:inherit mode-line-buffer-id))))
    `(mode-line-emphasis ((,class (:weight bold))))
@@ -370,7 +370,7 @@
 
    ;; == dirvish ==
 
-   `(dirvish-hl-line ((,class (:inherit highlight :foreground ,active-fg))))
+   `(dirvish-hl-line ((,class (:inherit hl-line))))
 
    ;; == git-timemachine ==
 
@@ -450,8 +450,9 @@
 
    ;;; = pulsar =
 
-   `(pulsar-generic ((,class (:background ,info-bg :foreground ,info-fg))))
-   `(pulsar-blue ((,class (:inherit pulsar-generic))))
+   ;; `(pulsar-generic ((,class (:background "#171a27" :foreground ,info-fg))))
+   `(pulsar-generic ((,class (:background "#3b435e"))))
+   `(pulsar-blue ((,class (:background ,glitch-blue-bg :foreground ,glitch-blue-fg))))
    `(pulsar-cyan ((,class (:background ,glitch-cyan-bg :foreground ,glitch-cyan-fg))))
    `(pulsar-green ((,class (:background ,glitch-green-bg :foreground ,glitch-green-fg))))
    `(pulsar-magenta ((,class (:background ,glitch-magenta-bg :foreground ,glitch-magenta-fg))))
@@ -512,6 +513,17 @@
    `(which-key-note-face ((,class (:inherit comment))))
    `(which-key-separator-face ((,class (:inherit comment))))
    `(which-key-special-key-face ((,class (:foreground ,special))))
+
+   ;; == solaire ==
+   ;; TODO: finish this
+   `(solaire-default-face ((,class (:background ,dark-bg))))
+   ;; solaire-fringe-face	fringe
+   ;; solaire-line-number-face	line-number
+   ;; solaire-hl-line-face	hl-line
+   ;; solaire-org-hide-face	org-hide, org-indent
+   ;; solaire-mode-line-face	mode-line
+   ;; solaire-mode-line-inactive-face	mode-line-inactive
+   ;; solaire-header-line-face	header-line
 
    ))
 
