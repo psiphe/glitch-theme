@@ -16,94 +16,95 @@
 
       ;;; = Palette =
 
-      ;; == Text ==
+       ;; == Text ==
 
-      (bg                     "#24283b")
-      (dark-bg                "#1f2335")
-      (active-bg              "#292e42")
-      (active-bg-hl           "#414868")
+       (bg                     "#24283b")
+       (dark-bg "#1c2030")
+       (active-bg              "#2f354b")
+       (active-bg-2              "#292e42")
+       (active-bg-hl           "#414868")
 
-      (fg                     "#a9b1d6")
-      (active-fg              "#c0caf5")
-      (muted-fg               "#565f89")     ; inactive, but visible
-      (inactive-fg            "#313750")     ; inactive, nearly hidden
+       (fg                     "#a9b1d6")
+       (active-fg              "#c0caf5")
+       (muted-fg               "#565f89")     ; inactive, but visible
+       (inactive-fg            "#313750")     ; inactive, nearly hidden
 
-      ;; == Colors ==
+       ;; == Colors ==
 
-      (glitch-black-bg        "#313750")
-      (glitch-black-bg-hl     "#1f2335")
-      (glitch-black-fg        "#1f2335")
-      (glitch-black-fg-hl     "#565f89")
+       (glitch-black-bg        "#313750")
+       (glitch-black-bg-hl     "#1f2335")
+       (glitch-black-fg        "#1f2335")
+       (glitch-black-fg-hl     "#565f89")
 
-      ;; Functions, builtins
-      (glitch-blue-bg         "#192a4d")
-      (glitch-blue-bg-hl      "#7aa2f7")
-      (glitch-blue-fg         "#7aa2f7")
-      (glitch-blue-fg-hl      "#031130")
+       ;; Functions, builtins
+       (glitch-blue-bg         "#192a4d")
+       (glitch-blue-bg-hl      "#7aa2f7")
+       (glitch-blue-fg         "#7aa2f7")
+       (glitch-blue-fg-hl      "#031130")
 
-      ;; Variables, object properties
-      (glitch-cyan-bg         "#274440")
-      (glitch-cyan-bg-hl      "#73daca")
-      (glitch-cyan-fg         "#73daca")
-      (glitch-cyan-fg-hl      "#222a29")
+       ;; Variables, object properties
+       (glitch-cyan-bg         "#274440")
+       (glitch-cyan-bg-hl      "#73daca")
+       (glitch-cyan-fg         "#73daca")
+       (glitch-cyan-fg-hl      "#222a29")
 
-      ;; Info/Success
-      (glitch-green-bg        "#273644")
-      (glitch-green-bg-hl     "#4c9e8a")
-      (glitch-green-fg        "#4c9e8a")
-      (glitch-green-fg-hl     "#11221e")
+       ;; Info/Success
+       (glitch-green-bg        "#273644")
+       (glitch-green-bg-hl     "#4c9e8a")
+       (glitch-green-fg        "#4c9e8a")
+       (glitch-green-fg-hl     "#11221e")
 
-      ;; Keywords
-      (glitch-magenta-bg      "#231c31")
-      (glitch-magenta-bg-hl   "#bb9af7")
-      (glitch-magenta-fg      "#bb9af7")
-      (glitch-magenta-fg-hl   "#171320")
+       ;; Keywords
+       (glitch-magenta-bg      "#231c31")
+       (glitch-magenta-bg-hl   "#bb9af7")
+       (glitch-magenta-fg      "#bb9af7")
+       (glitch-magenta-fg-hl   "#171320")
 
-      ;; Errors
-      (glitch-red-bg          "#342c3c")
-      (glitch-red-bg-hl       "#f7768e")
-      (glitch-red-fg          "#f7768e")
-      (glitch-red-fg-hl       "#30030b")
+       ;; Errors
+       (glitch-red-bg          "#342c3c")
+       (glitch-red-bg-hl       "#f7768e")
+       (glitch-red-fg          "#f7768e")
+       (glitch-red-fg-hl       "#30030b")
 
-      (glitch-white           "#c0caf5")
-      (glitch-white-bg-hl     "#bb9af7")
-      (glitch-white-fg        "#bb9af7")
-      (glitch-white-fg-hl     "#bb9af7")
+       (glitch-white           "#c0caf5")
+       (glitch-white-bg-hl     "#bb9af7")
+       (glitch-white-fg        "#bb9af7")
+       (glitch-white-fg-hl     "#bb9af7")
 
-      ;; Warnings
-      (glitch-yellow-bg       "#37363f")
-      (glitch-yellow-bg-hl    "#e0af68")
-      (glitch-yellow-fg       "#e0af68")
-      (glitch-yellow-fg-hl    "#2a1d09")
+       ;; Warnings
+       (glitch-yellow-bg       "#37363f")
+       (glitch-yellow-bg-hl    "#e0af68")
+       (glitch-yellow-fg       "#e0af68")
+       (glitch-yellow-fg-hl    "#2a1d09")
 
-      ;; == Diagnostics ==
+       ;; == Diagnostics ==
 
-      (info-bg                glitch-green-bg)
-      (info-bg-hl             glitch-green-bg-hl)
-      (info-fg                glitch-green-fg)
-      (info-fg-hl             glitch-green-fg-hl)
+       (info-bg                glitch-green-bg)
+       (info-bg-hl             glitch-green-bg-hl)
+       (info-fg                glitch-green-fg)
+       (info-fg-hl             glitch-green-fg-hl)
 
-      (alt-info-bg            glitch-blue-bg)     ; non-user select highlight (volatile highlights)
-      (alt-info-bg-hl         glitch-blue-bg-hl)
-      (alt-info-fg            glitch-blue-fg)
-      (alt-info-fg-hl         glitch-blue-fg-hl)
+       (alt-info-bg            glitch-blue-bg)     ; non-user select highlight (volatile highlights)
+       (alt-info-bg-hl         glitch-blue-bg-hl)
+       (alt-info-fg            glitch-blue-fg)
+       (alt-info-fg-hl         glitch-blue-fg-hl)
 
-      (warning-bg             glitch-yellow-bg)
-      (warning-bg-hl          glitch-yellow-bg-hl)
-      (warning-fg             glitch-yellow-fg)
-      (warning-fg-hl          glitch-yellow-fg-hl)
+       (warning-bg             glitch-yellow-bg)
+       (warning-bg-hl          glitch-yellow-bg-hl)
+       (warning-fg             glitch-yellow-fg)
+       (warning-fg-hl          glitch-yellow-fg-hl)
 
-      (error-bg               glitch-red-bg)
-      (error-bg-hl            glitch-red-bg-hl)
-      (error-fg               glitch-red-fg)
-      (error-fg-hl            glitch-red-fg-hl)
+       (error-bg               glitch-red-bg)
+       (error-bg-hl            glitch-red-bg-hl)
+       (error-fg               glitch-red-fg)
+       (error-fg-hl            glitch-red-fg-hl)
 
       ;;; == Misc ==
 
-      (qualifier         "#2ac3de")     ; types
-      (safe              "#7892bf")     ; constants, numbers, strings
-      (special           "#ea9a97")     ; escape sequences
-      )
+       (qualifier         "#2ac3de")     ; types
+       (safe              "#7892bf")     ; constants, numbers, strings
+       (special           "#ea9a97")     ; escape sequences
+       )
   (setq-default org-modern-todo-faces
                 '(("TODO" :background "#e0af68" :foreground "#37363f" :weight bold)
                   ("CURR" :background "#4c9e8a" :foreground "#273644" :weight bold)
@@ -114,82 +115,93 @@
   (custom-theme-set-faces
    'glitch
 
-   ;;; = Builtin Faces =
+   ;;; Basic Faces
 
-   `(bold ((,class (:weight bold))))
-   `(bold-italic ((,class (:weight bold :slant italic))))
-   `(button ((,class (:inherit link))))
-   `(completions-common-part ((,class (:inherit region))))
-   `(cursor ((,class (:background ,active-fg :foreground ,dark-bg))))
-   `(default ((,class (:background ,bg :foreground ,fg))))
-   `(error ((,class (:foreground ,error-fg))))
-   `(escape-glyph ((,class (:foreground ,special))))
-   `(fixed-pitch ((,class (:family "monospace"))))
-   `(fixed-pitch-serif ((,class (:family "monospace serif"))))
-   `(fringe ((,class (:background ,dark-bg))))
-   `(glyphless-char ((,class (:foreground ,special))))
-   `(highlight ((,class (:background ,active-bg))))
-   `(homoglyph ((,class (:foreground ,glitch-cyan-fg))))
-   `(italic ((,class (:slant italic))))
-   `(link ((,class (:foreground ,glitch-cyan-fg))))
-   `(link-visited ((,class (:foreground ,glitch-magenta-fg))))
-   `(minibuffer-prompt ((,class (:foreground ,glitch-blue-fg))))
-   `(mouse ((,class (:inherit default))))
-   `(nobreak-hyphen ((,class (:foreground ,special))))
-   `(nobreak-space ((,class (:foreground ,special))))
-   `(read-multiple-choice-face ((,class (:background ,active-bg :foreground ,active-fg))))
-   `(region ((,class (:background ,info-bg :foreground ,info-fg))))
-   `(scroll-bar ((,class (:background ,bg :foreground ,inactive-fg))))
-   `(secondary-selection ((,class (:background ,alt-info-bg :foreground ,alt-info-fg))))
-   `(shadow ((,class (:foreground ,muted-fg))))
-   `(success ((,class (:foreground ,info-fg))))
-   `(tool-tips ((,class (:inherit highlight))))
-   `(trailing-whitespace ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
-   `(underline ((,class (:underline t))))
-   `(variable-pitch ((,class (:family "sans serif"))))
-   `(variable-pitch-text ((,class (:family "sans serif"))))
-   `(warning ((,class (:foreground ,warning-fg))))
-   `(hl-line ((,class (:inherit highlight :background "#2f354b" :foreground ,active-fg))))
-   `(line-number ((,class (:foreground ,inactive-fg))))
-   `(line-number-current-line ((,class (:inherit highlight :background "#2f354b" :foreground ,active-fg))))
-   `(line-number-major-tick ((,class (:inherit highlight :foreground ,muted-fg))))
-   `(line-number-minor-tick ((,class (:inherit line-number-major-tick))))
-   `(border ((,class (:foreground ,dark-bg))))
-   `(child-frame-border ((,class (:inherit border))))
-   `(fill-column-indicator ((,class (:foreground ,inactive-fg))))
-   `(internal-border ((,class (:inherit border))))
-   `(vertical-border ((,class (:inherit border))))
-   `(isearch ((,class (:background ,info-bg-hl :foreground ,info-bg))))
-   `(isearch-fail ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
-   `(lazy-highlight ((,class (:background ,info-bg :foreground ,info-fg))))
-   `(match ((,class (:inherit isearch))))
+   `(bold                          ((,class (:weight bold))))
+   `(bold-italic                   ((,class (:weight bold :slant italic))))
+   `(border                        ((,class (:foreground ,dark-bg))))
+   `(button                        ((,class (:foreground ,glitch-blue-fg :weight bold))))
+   `(child-frame-border            ((,class (:inherit border))))
+   `(cursor                        ((,class (:background ,active-fg :foreground ,dark-bg))))
+   `(default                       ((,class (:background ,bg :foreground ,fg))))
+   `(error                         ((,class (:foreground ,glitch-red-fg))))
+   `(escape-glyph                  ((,class (:foreground ,special))))
+   `(fill-column-indicator         ((,class (:foreground ,inactive-fg))))
+   `(fixed-pitch                   ((,class (:family "monospace"))))
+   `(fixed-pitch-serif             ((,class (:family "monospace serif"))))
+   `(fringe                        ((,class (:background ,dark-bg))))
+   `(glyphless-char                ((,class (:foreground ,special))))
+   `(header-line                   ((,class (:inherit mode-line))))
+   `(header-line-highlight         ((,class (:inherit mode-line-active))))
+   `(highlight                     ((,class (:background ,active-bg :foreground ,active-fg))))
+   `(homoglyph                     ((,class (:foreground ,special))))
+   `(internal-border               ((,class (:inherit border))))
+   `(isearch                       ((,class (:background ,info-fg :foreground ,info-bg))))
+   `(isearch-fail                  ((,class (:background ,error-fg :foreground ,error-bg))))
+   `(italic                        ((,class (:slant italic))))
+   `(lazy-highlight                ((,class (:background ,info-bg :foreground ,info-fg))))
+   `(line-number                   ((,class (:foreground ,inactive-fg))))
+   `(line-number-current-line      ((,class (:inherit highlight))))
+   `(line-number-major-tick        ((,class (:background ,active-bg-2 :foreground ,muted-fg))))
+   `(line-number-minor-tick        ((,class (:inherit line-number-major-tick))))
+   `(link                          ((,class (:foreground ,glitch-cyan-fg :weight bold))))
+   `(link-visited                  ((,class (:inherit link :weight normal))))
+   `(match                         ((,class (:inherit isearch))))
+   `(menu                          ((,class (:background ,dark-bg :foreground ,muted-fg))))
+   `(minibuffer-prompt             ((,class (:foreground ,glitch-blue-fg))))
+   `(mode-line                     ((,class (:inherit menu))))
+   `(mode-line-active              ((,class (:inherit highlight))))
+   `(mode-line-buffer-id           ((,class (:weight bold))))
+   `(mode-line-buffer-id-inactive  ((,class (:inherit mode-line-buffer-id))))
+   `(mode-line-emphasis            ((,class (:weight bold))))
+   `(mode-line-highlight           ((,class (:background ,active-bg-hl :foreground ,active-fg))))
+   `(mode-line-inactive            ((,class (:inherit mode-line :foreground ,muted-fg))))
+   `(mouse                         ((,class (:foreground ,active-fg))))
+   `(nobreak-hyphen                ((,class (:foreground ,special))))
+   `(nobreak-space                 ((,class (:foreground ,special))))
+   ;; TODO: what is this
+   ;; `(read-multiple-choice-face     ((,class (:background ,active-bg :foreground ,active-fg))))
+   `(region                        ((,class (:background ,info-bg :foreground ,info-fg))))
+   `(scroll-bar                    ((,class (:foreground ,inactive-fg))))
+   `(secondary-selection           ((,class (:background ,alt-info-bg :foreground ,alt-info-fg))))
+   `(shadow                        ((,class (:foreground ,muted-fg))))
+   `(success (                     (,class (:foreground ,info-fg))))
+   `(tab-bar                       ((,class (:inherit menu))))
+   `(tab-line                      ((,class (:inherit menu))))
+   `(tool-bar                      ((,class (:inherit menu))))
+   `(tool-tips                     ((,class (:inherit highlight))))
+   `(trailing-whitespace           ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
+   `(tty-menu-disabled-face        ((,class (:inherit menu))))
+   `(tty-menu-enabled-face         ((,class (:inherit menu :foreground ,fg))))
+   `(tty-menu-selected-face        ((,class (:inherit menu :foreground ,active-fg))))
+   `(underline                     ((,class (:underline t))))
+   `(variable-pitch                ((,class (:family "sans serif"))))
+   `(variable-pitch-text           ((,class (:family "sans serif"))))
+   `(vertical-border               ((,class (:inherit border))))
+   `(warning                       ((,class (:foreground ,warning-fg))))
+   `(window-divider                ((,class (:foreground ,dark-bg))))
+   `(window-divider-first-pixel    ((,class (:inherit window-divider))))
+   `(window-divider-last-pixel     ((,class (:inherit window-divider))))
+
+   `(hl-line                       ((,class (:inherit highlight))))
    `(show-paren-match ((,class (:background ,active-bg-hl :foreground ,active-fg))))
    `(show-paren-match-expression ((,class (:inherit show-paren-match))))
    `(show-paren-mismatch ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
-   `(header-line ((,class (:inherit mode-line))))
-   `(header-line-highlight ((,class (:inherit mode-line-highlight))))
-   `(menu ((,class (:background ,dark-bg :foreground ,fg))))
-   `(mode-line ((,class (:inherit menu))))
-   `(mode-line-active ((,class (:inherit (mode-line) :background "#2f354b" :foreground ,active-fg))))
-   `(mode-line-buffer-id ((,class (:weight bold))))
-   `(mode-line-buffer-id-inactive ((,class (:inherit mode-line-buffer-id))))
-   `(mode-line-emphasis ((,class (:weight bold))))
-   `(mode-line-highlight ((,class (:background ,active-bg-hl :foreground ,active-fg))))
-   `(mode-line-inactive ((,class (:inherit mode-line :foreground ,muted-fg :background ,dark-bg))))
-
-   `(tab-bar ((,class (:inherit menu))))
-
-   `(tab-line ((,class (:inherit menu))))
-   `(tool-bar ((,class (:inherit menu))))
-   `(tty-menu-disabled-face ((,class (:inherit menu :foreground ,inactive-fg))))
-   `(tty-menu-enabled-face ((,class (:inherit menu))))
-   `(tty-menu-selected-face ((,class (:inherit (highlight menu) :foreground ,active-fg))))
+   `(completions-common-part ((,class (:inherit region))))
 
    ;;; = Dired =
 
-   `(dired-broken-symlink ((,class (:inherit error))))
-   `(dired-header ((,class (:foreground ,glitch-blue-fg))))
-   `(dired-warning ((,class (:inherit warning :background ,warning-bg))))
+   `(dired-broken-symlink          ((,class (:foreground ,glitch-red-fg))))
+   `(dired-directory               ((,class (:foreground ,glitch-blue-fg))))
+   `(dired-flagged                 ((,class (:foreground ,glitch-red-fg))))
+   `(dired-header                  ((,class (:foreground ,glitch-blue-fg))))
+   `(dired-ignored                 ((,class (:foreground ,muted-fg))))
+   `(dired-marked                  ((,class (:foreground ,glitch-yellow-fg))))
+   `(dired-perm-write              ((,class (:foreground ,muted-fg))))
+   `(dired-set-id                  ((,class (:foreground ,glitch-cyan-fg))))
+   `(dired-special                 ((,class (:foreground ,special))))
+   `(dired-symlink                 ((,class (:foreground ,glitch-magenta-fg))))
+   `(dired-warning                 ((,class (:foreground ,warning-fg :background ,warning-bg))))
 
    ;;; = Flymake =
 
@@ -264,6 +276,16 @@
    `(org-todo ((,class (:inherit warning))))
    `(org-upcoming-deadline ((,class (:inherit warning))))
 
+   ;; compilation-mode
+   `(compilation-info              ((,class (:foreground ,info-fg))))
+   `(compilation-error             ((,class (:foreground ,error-fg))))
+   `(compilation-warning           ((,class (:foreground ,warning-fg))))
+   `(compilation-line-number       ((,class (:foreground ,glitch-blue-fg))))
+   `(compilation-column-number     ((,class (:foreground ,muted-fg))))
+   `(compilation-mode-line-run     ((,class (:foreground ,glitch-yellow-fg))))
+   `(compilation-mode-line-exit     ((,class (:foreground ,info-fg :weight bold))))
+   `(compilation-mode-line-fail     ((,class (:foreground ,error-fg :weight bold))))
+
    ;;; = Syntax Highlighting =
 
    `(font-lock-builtin-face ((,class (:foreground ,glitch-blue-fg))))
@@ -288,7 +310,8 @@
 
    ;; == ace-window ==
 
-   `(aw-background-face ((,class ())))
+   ;; `(aw-background-face ((,class (:foreground ,inactive-fg))))
+   `(aw-background-face ((,class (:foreground ,special))))
    `(aw-key-face ((,class (:foreground ,glitch-blue-fg))))
    `(aw-leading-char-face ((,class (:foreground ,glitch-green-fg :weight bold))))
    `(aw-minibuffer-leading-char-face ((,class (:inherit aw-leading-char-face))))
@@ -516,7 +539,8 @@
 
    ;; == solaire ==
    ;; TODO: finish this
-   `(solaire-default-face ((,class (:background ,dark-bg))))
+   ;; `(solaire-default-face ((,class (:background ,dark-bg))))
+   `(solaire-default-face ((,class (:background "#1f2335"))))
    ;; solaire-fringe-face	fringe
    ;; solaire-line-number-face	line-number
    ;; solaire-hl-line-face	hl-line
@@ -524,6 +548,10 @@
    ;; solaire-mode-line-face	mode-line
    ;; solaire-mode-line-inactive-face	mode-line-inactive
    ;; solaire-header-line-face	header-line
+
+   `(treemacs-nerd-icons-file-face ((,class (:foreground ,glitch-blue-fg))))
+   `(treemacs-nerd-icons-root-face ((,class (:foreground ,glitch-blue-fg))))
+   `(treemacs-window-background-face ((,class :background "#1f2335")))
 
    ))
 
