@@ -190,6 +190,23 @@
    `(show-paren-mismatch ((,class (:background ,error-bg-hl :foreground ,error-fg-hl))))
    `(completions-common-part ((,class (:inherit region))))
 
+   `(term-color-black ((,class (:foreground ,glitch-black-fg))))
+   `(term-color-bright-black ((,class (:foreground ,glitch-black-fg))))
+   `(term-color-white ((,class (:foreground ,glitch-white-fg))))
+   `(term-color-bright-white ((,class (:foreground ,glitch-white-fg))))
+   `(term-color-blue ((,class (:foreground ,glitch-blue-fg))))
+   `(term-color-bright-blue ((,class (:foreground ,glitch-blue-fg))))
+   `(term-color-red ((,class (:foreground ,glitch-red-fg))))
+   `(term-color-bright-red ((,class (:foreground ,glitch-red-fg))))
+   `(term-color-yellow ((,class (:foreground ,glitch-yellow-fg))))
+   `(term-color-bright-yellow ((,class (:foreground ,glitch-yellow-fg))))
+   `(term-color-cyan ((,class (:foreground ,glitch-cyan-fg))))
+   `(term-color-bright-cyan ((,class (:foreground ,glitch-cyan-fg))))
+   `(term-color-green ((,class (:foreground ,glitch-green-fg))))
+   `(term-color-bright-green ((,class (:foreground ,glitch-green-fg))))
+   `(term-color-magenta ((,class (:foreground ,glitch-magenta-fg))))
+   `(term-color-bright-magenta ((,class (:foreground ,glitch-magenta-fg))))
+
    ;;; = Dired =
 
    `(dired-broken-symlink          ((,class (:foreground ,glitch-red-fg))))
