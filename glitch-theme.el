@@ -19,7 +19,8 @@
        ;; == Text ==
 
        (bg                     "#24283b")
-       (dark-bg "#1c2030")
+       ;; (dark-bg "#1c2030")
+       (dark-bg "#1a1e2d")
        (active-bg              "#2f354b")
        (active-bg-2              "#292e42")
        (active-bg-hl           "#414868")
@@ -310,8 +311,9 @@
 
    ;; == ace-window ==
 
-   ;; `(aw-background-face ((,class (:foreground ,inactive-fg))))
-   `(aw-background-face ((,class (:foreground ,special))))
+   `(aw-background-face ((,class (:foreground ,inactive-fg))))
+   ;; TODO move this
+   `(centaur-tabs-dim-buffer-face ((,class (:foreground ,inactive-fg))))
    `(aw-key-face ((,class (:foreground ,glitch-blue-fg))))
    `(aw-leading-char-face ((,class (:foreground ,glitch-green-fg :weight bold))))
    `(aw-minibuffer-leading-char-face ((,class (:inherit aw-leading-char-face))))
