@@ -69,7 +69,7 @@
 
        (glitch-white           "#c0caf5")
        (glitch-white-bg-hl     "#bb9af7")
-       (glitch-white-fg        "#bb9af7")
+       (glitch-white-fg        "#c0caf5")
        (glitch-white-fg-hl     "#bb9af7")
 
        ;; Warnings
@@ -559,7 +559,9 @@
    ;; == solaire ==
    ;; TODO: finish this
    ;; `(solaire-default-face ((,class (:background ,dark-bg))))
-   `(solaire-default-face ((,class (:background "#1f2335"))))
+   ;; `(solaire-default-face ((,class (:background "#1f2335"))))
+
+   `(solaire-default-face ((,class (:background "#1c2030"))))
    ;; solaire-fringe-face	fringe
    ;; solaire-line-number-face	line-number
    ;; solaire-hl-line-face	hl-line
