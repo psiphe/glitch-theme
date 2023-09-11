@@ -292,7 +292,7 @@
    `(org-priority ((,class (:foreground ,glitch-blue-fg))))
    `(org-scheduled ((,class (:foreground ,info-fg))))
    `(org-scheduled-previously ((,class (:inherit warning))))
-   `(org-scheduled-today ((,class (:background ,info-bg-hl :foreground ,info-fg-hl))))
+   `(org-scheduled-today ((,class (:inherit org-scheduled))))
    `(org-sexp-date ((,class (:foreground ,glitch-magenta-fg))))
    `(org-special-keyword ((,class (:inherit font-lock-keyword-face))))
    `(org-table ((,class (:foreground ,muted-fg))))
@@ -568,7 +568,7 @@
    ;; `(solaire-default-face ((,class (:background ,dark-bg))))
    ;; `(solaire-default-face ((,class (:background "#1f2335"))))
 
-   `(solaire-default-face ((,class (:background "#1c2030"))))
+   ;; `(solaire-default-face ((,class (:background "#1c2030"))))
    ;; solaire-fringe-face	fringe
    ;; solaire-line-number-face	line-number
    ;; solaire-hl-line-face	hl-line
